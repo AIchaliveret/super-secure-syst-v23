@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPER SECURE SYST v2.3 - 30-Second Observatory</title>
+<style>
+body {margin:0; font-family: 'DM Sans', sans-serif; background:#0a0a0f; color:#E0FFFC;}
+.hero {padding:80px 20px; text-align:center; background: radial-gradient(circle at 30% 20%, #19AC57 0%, #0a0a0f 50%);}
+h1 {font-family: 'Chakra Petch'; font-size:3rem; color:#19AC57; margin:0;}
+h2 {color:#BF0090;}
+.badge {display:inline-block; padding:8px 16px; border-radius:20px; background:#19AC57; color:#0a0a0f; margin:5px; font-weight:bold;}
+.card {background:#14141f; border:1px solid #19AC57; border-radius:12px; padding:20px; margin:20px auto; max-width:900px;}
+a.button {display:inline-block; padding:12px 24px; background:#BF0090; color:white; border-radius:8px; text-decoration:none; margin:10px;}
+.grid {display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; max-width:900px; margin:0 auto;}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>SUPER SECURE SYST v2.3</h1>
+<p>30-Second Safety Observatory | Best Gas Syst: 4-Channel NDIR + Pump + Evolus</p>
+<div>
+<span class="badge">AMD MI300X</span>
+<span class="badge">ROCm + vLLM</span>
+<span class="badge">Intelligent Industry</span>
+<span class="badge">UNIKA Atma Jaya</span>
+</div>
+<br>
+<a class="button" href="https://share.streamlit.io" target="_blank">Open Streamlit App</a>
+<a class="button" href="https://github.com" target="_blank">GitHub Repo MIT</a>
+</div>
+
+<div class="card">
+<h2>Best Gas Syst - The Best Gas Syst</h2>
+<div class="grid">
+<div><strong>CH4 3.33µm</strong><br>Leak 0-100% LEL</div>
+<div><strong>CO2 4.26µm</strong><br>Air Quality 400-5000ppm</div>
+<div><strong>CO 4.64µm</strong><br>Toxicity 0-100ppm</div>
+<div><strong>Ref 3.91µm</strong><br>Drift Compensation</div>
+<div><strong>O2 0-25%</strong><br>Electrochemical</div>
+<div><strong>H2S 0-100ppm</strong><br>Electrochemical + Pump 350mL/min</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Wiring Diagram 4-Channel + Pump</h2>
+<p>ESP32 DevKit: GPIO16/17 UART2 → NDIR 4-channel, GPIO21/22 I2C → O2/H2S, GPIO27 PWM → Pump micro diaphragm 5V, GPIO25 LED/Buzzer. Flow: Inlet → Filter 5µm → Pump → NDIR cell 80mm → Exhaust → 4ft probe → MQTT → AMD Cloud.</p>
+<p><em>See artifact v2.3 image for actual schematic - use /mnt/data/resource/image_20261008_192623.webp</em></p>
+</div>
+
+<div class="card">
+<h2>Evolus Workflow Alert</h2>
+<p><strong>1. Document Extractor</strong> reads SOP manuals<br>
+<strong>2. Workflow</strong> checks threshold CO>35ppm CH4>10% LEL<br>
+<strong>3. BYOM</strong> Llama 3.1 8B on vLLM AMD MI300X ROCm reasons<br>
+<strong>4. REST API</strong> triggers alert + CRM MCP + human handoff</p>
+<p>Meets 2 building blocks requirement for partner prize.</p>
+</div>
+
+<div class="card">
+<h2>Live Demo Video Ready</h2>
+<p>Record short video from Streamlit live observatory tab - shows real-time graph + alert "Open damper 30%, evac zone 2". Use Kling images below.</p>
+</div>
+
+<div class="card">
+<h2>AMD Technology</h2>
+<p>Every project must run meaningful part on AMD infrastructure. Ours runs LLM reasoning + vLLM endpoint on AMD Developer Cloud MI300X. Uses ROCm, Instinct accelerators, $100 credits.</p>
+</div>
+
+<footer style="text-align:center; padding:40px; color:#666;">Ready for lablab.ai submission | MIT Open Source | containerized | README runs</footer>
+</body>
+</html>
