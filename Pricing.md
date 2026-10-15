@@ -1,4 +1,5 @@
-# SUPER SECURE SYST v2.3 - Pricing Strategy
+# Pricing - SUPER SECURE SYST v3.0
+Best Gas Syst 4-NDIR + O2/H2S + Pump 350mL/min + F-21 HMDS
 **AMD ACT III Intelligent Industry | UNIKA Atma Jaya Jakarta**
 
 ## Kurs Referensi
