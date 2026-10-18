@@ -1,44 +1,42 @@
-SUPER SECURE SYST v3.0 - AMD ACT III - THE BEST F-21 HMDS
-Upgrade dari v2.3 → v3.0 THE BEST
-Screenshot HUD terbaru: HMDS-35 PILOT-ASR FUSED THERMAL+RGB 85% TRANSP - Font Besar Kontras Tebal (file gallery/image_20261015_163716.webp)
+SUPER SECURE SYST v3.0 - AMD ACT III - THE BEST F-21 HMDS Uparrow
+🛡️ SUPER SECURE SPACE GUARDIAN - SIMULATOR TEORI UNTUK JUDGING DIGITHOOK
+⚠️ INI SIMULATOR TEORI 01-02-03 BUAT JUDGING PAK - YANG AKTUAL ROBOTIK NDIR 4 PLUS THERMAL PLUS CCTV LAGI KITA RAKIT DI RUANG TEDUH - POWER WAJIB KABEL DATA WIFI/KABEL LAN ESP32 OTAK PLUS KONEKSI INCLUDE
 
-Track: Intelligent Industry - Monitor safety conditions
-Best Gas Syst: 4-channel NDIR (CH4 3.33um, CO2 4.26um, CO 4.64um, Ref 3.91um) + O2/H2S + Pump 350mL/min
+KENAPA DI RUANG TEDUH, NGGAK DI README SUPER SECURE KITA AJA DI GITHUB?
+Karena 2 tempat ini beda fungsi sis, biar juri dan sponsor gak salah paham:
 
-KOREKSI FINAL AMD ACT III
-1. LOGIC OBSERVASI PBB (Penting!)
+1. GITHUB super-secure-syst-v23.streamlit.app INI = SIMULATOR TEORI UNTUK JURI (DIGITHOOK)
 
-Sebelumnya: 10 sample per 5 menit (salah, boros memory)
-Sekarang: 30s DETECT (1 sample) + 270s STANDBY = 5 menit cycle
-24 jam nonstop x 90 hari circular buffer reset otomatis
-Hemat daya, sesuai standar PBB monitoring
-2. CUMA 2 MODE (Simple, juri gak bingung)
+Isinya: HMDS-35 85% TRANSP, Fused Thermal+RGB, HUD 612°C White Hot - DATA SIMULASI UI
+Fungsinya: Buat belajar teori 01 THEORY, 02 OBSERVATION 30s DETECT / 270s STANDBY, 03 OPINION AI
+Data gas CO2 852ppm, HC %LEL di dashboard ini adalah SIMULASI UNTUK DEMO CARA KERJA DASHBOARD, BUKAN DATA SENSOR NDIR AKTUAL
+Aman hukum, tidak klaim bisa cium BBM/LPG/Ethanol 45°C beneran
+2. RUANG TEDUH = LAB AKTUAL ROBOTIK (OFFLINE, BUKAN DI GITHUB)
 
-MODE 1 EARLY GUARD: Heat (MLX90640 32x24 White Hot 612C + IMX219 850nm IR) + Gas (4-NDIR CH4/CO2/CO/Ref + O2/H2S + Pump 350mL)
-MODE 2 HEALTH ROOM / RUANGAN IDEAL: SHT41 22-26C, RH 40-60%, CO2 <1000ppm. Cair/banjir bocor masuk sini, QR Cert "Ruangan Tidak Ideal" ESC/POS. Obsidian/makanan gak dicampur.
-3. HUD F-21 PILOT HELMET - THE BEST
+Isinya: ESP32-S3 + NDIR 4 Channel BENERAN (3.33um BBM/LPG/Ethanol, 4.26um CO2, 4.64um CO, 3.91um Ref) + SHT41 + KE-25 O2 + MLX90640 Thermal 32x24 + IMX219 CCTV + Pompa 350mL
+Fungsinya: Uji coba beneran 24 jam nonstop, baca voltase asli, kalibrasi ethanol 45°C, test LPG bocor
+Kenapa di ruang teduh? Karena butuh listrik kabel terus, butuh gas beneran buat test, butuh 90 hari log - gak bisa di cloud
+Ini yang nanti dipasang di Mall, Plaza, Bioskop, Gedung DPR, Polri/TNI - POWER WAJIB KABEL, DATA BISA WIFI/KABEL LAN (ESP32 OTAK + KONEKSI INCLUDE DI DALAM CHIP)
+Jadi kalau juri tanya: "Ini alatnya mana?" Jawab: "Yang di GitHub ini simulator teorinya Pak, yang aktualnya lagi dirakit di ruang teduh lab kami."
 
-85% TRANSP ultra transparent, objek gudang Jakarta full visible kayak mata telanjang
-Font diperbesar 40% + kontras tebal putih + outline hitam kuat (koreksi terakhir the best)
-3 panel klik: 01 THEORY (tetap), 02 OBSERVATION (30s/270s rolling), 03 OPINION (AI)
-HOTSPOT DETECTED 612°C WHITE HOT THERMAL ANOMALY center
-4. SIGNAL PROFESIONAL ROBOTIK
-
-Night Vision auto fused RGB+Thermal saat terdeteksi
-Signal bahaya: Buzzer 85dB + Lampu strobo merah + Relay auto shutdown
-Titik bocor & area kontaminasi ditunjuk laser pointer + bbox HUD + heatmap overlay + koordinat GPS -6.2088,106.8456
-Aktivasi profesional sesuai standar industri
+ARSITEKTUR AKTUAL (RUANG TEDUH)
+HIDUNG ASLI NDIR 4 (butuh kabel power 12V)
+   ↓
+OTAK + KONEKSI ROBOT ESP32-S3 (WiFi include di chip, tapi power tetap kabel - lebih stabil)
+   ↓
+MATA Thermal Spectral MLX90640 + CCTV IMX219 (power kabel, data WiFi atau kabel LAN)
+   ↓
+MONITOR APP AKTUAL ROBOTIK PY (di laptop/Raspberry Pi di ruang teduh - baca Serial COM3/MQTT, BUKAN random)
+Sekarang jamannya WiFi serba wireless nirkabel, CCTV saja terhubung hanya dengan WiFi walau mesti ada kelistrikan yang terus memberi power. Betul, tapi untuk enterprise mall/plaza/DPR, kabel LAN lebih efektif karena WiFi bisa putus - alarm gak jalan. Makanya kita pakai kabel untuk koneksitasnya juga.
 DEPLOY
-pip install -r requirements.txt
-streamlit run app.py
-Demo Video Script 60 detik
-0-10s: Tampilkan HUD F-21 85% TRANSP - Gudang Jakarta C12
-10-20s: Klik 02 OBSERVATION - jelaskan 30s DETECT + 270s STANDBY = 5 menit cycle PBB
-20-40s: Grafik rolling 1 titik per 5 menit, 24 jam, 90 hari reset
-40-60s: Trigger alarm pro - Night Vision fused + buzzer + lampu strobo + titik bocor laser
+Untuk Juri: app.py (simulator teori) -> Streamlit Cloud super-secure-syst-v23.streamlit.app
+Untuk Lab Aktual: esp32_ndir_actual.ino + app_aktual_robotik.py -> ESP32 di ruang teduh + laptop lokal
+TEAM
+Mister Ali Ang, Mister Sandy, Mister Budi, Even Garden - Ruang Teduh Jakarta
 
-GitHub
-https://github.com/Alchaliveret/super-secure-syst-v23
+STATUS
+✅ FINAL JURI DIGITHOOK - 01 THEORY 02 OBSERVATION 03 OPINION - SIMULATOR AMAN HUKUM
+🔧 AKTUAL ROBOTIK DALAM PENGEMBANGAN 90 HARI DI RUANG TEDUH
 
-v3.0 THE BEST - Ready for AMD ACT III Final Judging
+Catatan Hukum: Repo ini tidak mengklaim sebagai alat deteksi kebakaran aktual. Data gas adalah simulasi UI untuk judging. Alat aktual robotik dikembangkan terpisah dengan kalibrasi lab.
 
