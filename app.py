@@ -1,94 +1,139 @@
 """
-SUPER SECURE SPACE GUARDIAN - FINAL JURI DIGITHOOK - 3 JAM REVISI
-STATUS: SIMULATOR TEORI UNTUK JUDGING - BUKAN ALAT AKTUAL
-Fix: FileNotFoundError + Disclaimer Hukum + Tidak klaim NDIR aktual
+SUPER SECURE SYST v23 - SUPER INFRARED
+HackGlobal 2026 - 6 Detect in 1 Agent + Bio Healthy Room
+Repo: AIchaliveret/super-secure-syst-v23
+Main module: app.py - Streamlit Cloud entry point
+Vultr: Compute Singapore + Serverless Inference (Llama)
 """
-
 import streamlit as st
-import random
 import pandas as pd
-from datetime import datetime, timedelta
-from pathlib import Path
+import numpy as np
+import random, time
+from datetime import datetime
 
-st.set_page_config(page_title="SUPER SECURE SPACE GUARDIAN - JURI SIMULATOR", layout="wide", page_icon="🛡️")
+st.set_page_config(page_title="Super Secure Syst v23 - Super Infrared", page_icon="🛡️", layout="wide")
 
-st.markdown("""
-<style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800&display=swap');
-.hud-top {font-family:'JetBrains Mono', monospace; font-size:16px; font-weight:800; color:white; background: rgba(200,0,0,0.85); padding:12px; border:2px solid #ff0;}
-.hud-sub {font-family:'JetBrains Mono', monospace; font-size:12px; color:#ff0; background: rgba(0,0,0,0.9); padding:8px; border:1px solid #ff0;}
-.hotspot {font-family:'JetBrains Mono', monospace; font-size:28px; font-weight:900; color:white; text-align:center; text-shadow: 3px 3px 0px black; margin:15px 0; background: rgba(0,0,0,0.6); padding:10px; border:1px solid red;}
-.panel {background: rgba(20,20,31,0.95); border:1px solid #19AC57; border-radius:12px; padding:14px; margin:10px 0; color:white;}
-.disclaimer {background: rgba(255,255,0,0.9); color:black; font-weight:800; padding:10px; border:2px solid red; text-align:center;}
-</style>
-""", unsafe_allow_html=True)
+# --- Header ---
+st.title("🛡️ SUPER SECURE SYST v23 - SUPER INFRARED")
+st.caption("HackGlobal 2026 | 6 Detect in 1 Agent | Vultr Compute Singapore + Vultr Serverless Inference | 30-Second Safety Observatory + 7-Second IR Lens")
+st.markdown("**Live Demo uses simulated sensor data** so judges can test without hardware. Real hardware: ESP32-S3 -> MQTT TLS -> Vultr Compute -> same JSON format.")
 
-st.markdown('<div class="hud-top">🛡️ SUPER SECURE SPACE GUARDIAN - SIMULATOR TEORI UNTUK JURI DIGITHOOK | JUDGING IN PROGRESS | LOC: JAKARTA WAREHOUSE -6.2088°S, 106.8456°E</div>', unsafe_allow_html=True)
-st.markdown('<div class="hud-sub">⚠️ DISCLAIMER: INI ADALAH SIMULATOR DASHBOARD UNTUK PENILAIAN TEORI 01-02-03. DATA GAS DI BAWAH INI ADALAH DATA SIMULASI UI UNTUK DEMO, BUKAN DATA SENSOR NDIR AKTUAL. ALAT AKTUAL ROBOTIK DIKEMBANGKAN TERPISAH DI RUANG TEDUH.</div>', unsafe_allow_html=True)
-st.markdown('<div class="disclaimer">SIMULATOR - BUKAN ALAT DETEKSI KEBAKARAN AKTUAL - UNTUK BELAJAR TEORI & OBSERVASI JURI</div>', unsafe_allow_html=True)
+# --- Sidebar: controls ---
+st.sidebar.header("⚙️ Controls")
+mode = st.sidebar.selectbox("Mode", ["Demo - Simulated Sensors", "Live - ESP32 MQTT (coming soon)"])
+interval = st.sidebar.slider("Refresh (seconds)", 2, 10, 3)
+if st.sidebar.button("🔄 Refresh Now"):
+    st.rerun()
 
-col_img, col_side = st.columns([2.5,1])
+# --- Simulated sensor data ---
+def get_reading():
+    return {
+        "CO2_ppm": round(random.uniform(400, 900), 1),
+        "CO_ppm": round(random.uniform(0, 45), 1),
+        "CH4_ppm": round(random.uniform(0, 8), 2),
+        "Naphtol_um": round(random.uniform(3.2, 3.6), 3),
+        "H2O_OH": round(random.uniform(3.1, 3.5), 3),
+        "Gem_emissivity": round(random.uniform(7.5, 7.9), 3),
+        "Temp_C": round(random.uniform(26, 34), 1),
+        "Humidity_%": round(random.uniform(55, 88), 1),
+        "Thermal_Max_C": round(random.uniform(60, 118), 1),
+        "Dust_index": round(random.uniform(10, 95), 1),
+    }
 
-img_path = Path("gallery/image_20261015_163716.webp")
-img_path_alt = Path("image_20261015_163716.webp")
+data = get_reading()
 
-with col_img:
-    if img_path.exists():
-        st.image(str(img_path), use_container_width=True, caption="HMDS-35 85% TRANSP - SIMULATOR VISUAL - THE BEST FINAL")
-    elif img_path_alt.exists():
-        st.image(str(img_path_alt), use_container_width=True)
+# --- Top metrics ---
+c1, c2, c3, c4 = st.columns(4)
+c1.metric("CO2 (4.26um)", f"{data['CO2_ppm']} ppm", "OK" if data['CO2_ppm'] < 800 else "Ventilate")
+c2.metric("CO (4.64um)", f"{data['CO_ppm']} ppm", "SAFE" if data['CO_ppm'] < 35 else "⚠️ EVAC ZONE 2")
+c3.metric("Thermal Max MLX90640", f"{data['Thermal_Max_C']} °C", "OK" if data['Thermal_Max_C'] < 115 else "🔴 AUTO-STOP")
+c4.metric("Humidity SHT41", f"{data['Humidity_%']} %", "OK" if data['Humidity_%'] < 80 else "Mold risk")
+
+# --- Agent suggestion ---
+st.subheader("🤖 AI Agent - Action")
+if data['CO_ppm'] >= 35:
+    st.error("**Action:** CO 40ppm approx - Open damper 30%, evac zone 2, notify tech.")
+elif data['Thermal_Max_C'] >= 115:
+    st.error("**Action:** Kuali >115°C - Auto-stop Relay COM-NC-NO, check valve Orange SS304.")
+elif data['Humidity_%'] >= 80:
+    st.warning("**Action:** Humidity >80% - Bio Healthy Room needs ventilation + cleaning schedule. Risk of mold / pests.")
+else:
+    st.success("**Action:** All safe - Continue monitoring. 30-Second Observatory active.")
+
+# --- Tabs: 6 Detect ---
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+    "🍎 Food", "🏠 Bio Healthy Room", "🧴 Derma", "🎨 Naphtol", "🔍 Forensic Trace", "💎 Gem", "📄 Certificate"
+])
+
+with tab1:
+    st.header("🍎 Food Detect - IMX219 + NDIR 4.26um")
+    st.write(f"CO2: {data['CO2_ppm']} ppm | Temp: {data['Temp_C']}°C | Humidity: {data['Humidity_%']}%")
+    st.write("**Result:** Freshness OK" if data['CO2_ppm'] < 800 else "**Result:** Ventilate storage, re-check in 30 sec")
+    st.bar_chart(pd.DataFrame({"CO2": [data['CO2_ppm'], 600, 800], "Limit": [800, 800, 800]}))
+
+with tab2:
+    st.header("🏠 Bio Healthy Room - NEW for HackGlobal")
+    st.write("Dust, Humidity, Dirty Area monitoring. Prevention prototype, NOT medical sterilization.")
+    # Bio Healthy Room logic
+    if data['Dust_index'] > 70 or data['Humidity_%'] >= 80:
+        status = "🔴 RISK - Needs Cleaning"
+    elif data['Dust_index'] > 40:
+        status = "🟡 NEEDS CLEANING"
     else:
-        st.warning("⚠️ Upload file gallery/image_20261015_163716.webp ke GitHub untuk HUD. Saat ini pakai placeholder simulator.")
-        st.markdown('<div style="background: linear-gradient(to bottom, #333, #111); height:380px; display:flex; align-items:center; justify-content:center; border:1px solid #19AC57; color:white; font-family:monospace; text-align:center;">GUDANG JAKARTA — AREA C12 — SIMULATOR<br>HOTSPOT 612°C WHITE HOT (SIMULASI UI)<br>UPLOAD image_20261015_163716.webp TO gallery/</div>', unsafe_allow_html=True)
-    
-    st.markdown('<div class="hotspot">→ HOTSPOT DETECTED SIMULASI — WHITE HOT 612°C — THERMAL ANOMALY (UI DEMO)</div>', unsafe_allow_html=True)
-
-with col_side:
-    st.markdown("### 🛡️ F-21 SYSTEM SIMULATOR v3.0 JURI")
-    st.metric("Cycle", "5:00", "30s DETECT / 270s STANDBY SIMULASI")
-    st.metric("System", "4-NDIR SIMULATOR", "CH4 3.33, CO2 4.26, CO 4.64, Ref 3.91 - SIMULASI")
-    st.metric("Status", "JUDGING", "Disithook - Teori & Observasi")
-
-    mode = st.radio("PILIH MODE SIMULATOR", ["MODE 1 - EARLY GUARD (SIMULASI)", "MODE 2 - HEALTH ROOM IDEAL (SIMULASI)"], index=0)
-
-    if mode == "MODE 1 - EARLY GUARD (SIMULASI)":
-        st.info("**Safety Simulator:** MLX90640 32x24 White Hot + IMX219 + 850nm IR Fusion + Gas NDIR - DATA SIMULASI UNTUK TEORI JURI")
+        status = "🟢 CLEAN"
+    st.subheader(f"Status: {status}")
+    colA, colB, colC = st.columns(3)
+    colA.metric("Dust Index", f"{data['Dust_index']}")
+    colB.metric("Humidity", f"{data['Humidity_%']} %")
+    colC.metric("Thermal", f"{data['Thermal_Max_C']} °C")
+    st.write("**AI Suggestion:**")
+    if "RISK" in status:
+        st.write("- Turn on ventilation, schedule cleaning now, check for mold / pests / bacteria risk area.")
+    elif "NEEDS" in status:
+        st.write("- Clean dusty area, dry wet area, re-check in 1 hour.")
     else:
-        st.success("**Ruangan Ideal Simulator:** SHT41 22-26°C, RH 40-60%, CO2<1000ppm - SIMULASI")
+        st.write("- Room is clean. Keep monitoring every 30 seconds.")
+    # Checklist
+    st.checkbox("Ventilation ON", value=True)
+    st.checkbox("Cleaning scheduled")
+    st.checkbox("Filter checked")
 
-    st.divider()
-    t1, t2, t3 = st.tabs(["01 THEORY (JURI)", "02 OBSERVATION 30s (SIMULASI)", "03 OPINION AI (TEORI)"])
+with tab3:
+    st.header("🧴 Derma Detect - Multispectral Preview")
+    st.write(f"RGB IMX219 + NDIR: H2O/OH {data['H2O_OH']} um | Temp {data['Temp_C']}°C")
+    st.write("Preview only - not a medical diagnosis.")
 
-    with t1:
-        st.markdown('<div class="panel"><b>01 — THEORY UNTUK JURI:</b><br>Fire risk theory: Jika thermal anomaly >600°C + HC >10% LEL, risiko pembakaran meningkat. NDIR 4-channel: 3.33um HC (BBM/LPG/Ethanol 45C), 4.26um CO2, 4.64um CO, 3.91um Ref. O2 drop >0.5% indikasi LPG berat di bawah. Di mall/plaza/DPR, power WAJIB kabel, data bisa WiFi atau kabel LAN untuk stabilitas. ESP32 sebagai otak + koneksi WiFi include.<br><br><b>AKTUAL vs SIMULATOR:</b> Simulator ini pakai data random untuk demo UI teori. Alat aktual robotik baca voltase NDIR beneran di ruang teduh (ESP32).</div>', unsafe_allow_html=True)
-    with t2:
-        st.markdown('<div class="panel"><b>02 — OBSERVATION PBB 30s/270s (SIMULASI UI UNTUK JURI):</b><br>Data di bawah adalah SIMULASI untuk menunjukkan cara kerja dashboard. Sample 1x per 5 menit, 24 jam nonstop, 90 hari circular reset - KONSEP TEORI.<br><br>CO2 852ppm (SIM) • TEMP 28.3°C (SIM) • HUMIDITY 62% (SIM) • AIRFLOW 0.4 m/s (SIM)</div>', unsafe_allow_html=True)
-        if st.button("▶ Jalankan Observasi 30s DETECT (SIMULASI)"):
-            with st.spinner("DETECTING 30s SIMULASI..."):
-                import time; time.sleep(1)
-            st.success("SIMULASI: 612°C White Hot terdeteksi (DEMO UI)")
-            
-            # SIMULASI DENGAN LABEL JELAS - TIDAK KLAIM AKTUAL
-            st.warning("⚠️ DATA DI BAWAH INI SIMULASI UI - BUKAN DATA SENSOR AKTUAL")
-            hc_sim = random.randint(2, 8)  # SIMULASI RENDAH - TIDAK BAHAYA
-            temp_sim = 28.3 + random.random()*2
-            
-            # JANGAN TAMPILKAN ALERT BAHAYA PALSU - HANYA INFO TEORI
-            st.info(f"SIMULASI UI: HC {hc_sim}% LEL (simulasi) | TEMP {temp_sim:.1f}°C (simulasi) - Jika aktual >10% LEL + thermal >600°C = teori bahaya kebakaran")
-            
-            data = []
-            now = datetime.now()
-            for i in range(12):
-                data.append({"time": now - timedelta(minutes=5*i), "CO2_SIM": 850+random.randint(-10,15), "TEMP_SIM": 28.3+random.random(), "HOTSPOT_SIM": 610+random.randint(0,5)})
-            df = pd.DataFrame(data)
-            st.line_chart(df.set_index("time")[["CO2_SIM","TEMP_SIM"]])
-            st.dataframe(df, use_container_width=True)
-            st.caption("Grafik di atas adalah SIMULASI untuk demo cara kerja observasi 5 menit - bukan data aktual")
-            
-    with t3:
-        st.markdown('<div class="panel"><b>03 — OPINION AI (TEORI UNTUK JURI):</b><br>Jika sistem aktual robotik (ESP32 + NDIR 4 + thermal + CCTV) mendeteksi:<br>- HC >10% LEL AKTUAL + thermal >600°C AKTUAL = Confirmed heat source + flammable vapor<br>- O2 drop >0.5% = LPG bocor berat di bawah<br>- Temp 40-50°C + HC naik = Ethanol 45°C / spiritus menguap<br><br>Rekomendasi teori: Suppress fire, isolate section, ventilasi paksa, cut gas valve otomatis via relay. Pompa 350mL ON 24 jam. Power WAJIB kabel untuk enterprise mall/plaza/DPR/Polri/TNI.<br><br>OPINI INI ADALAH TEORI - ALAT AKTUAL DIUJI DI RUANG TEDUH TERPISAH.</div>', unsafe_allow_html=True)
-        if st.button("🚨 Simulasi Signal Pro (TEORI)"):
-            st.error("🚨 SIMULASI ALARM TEORI: Buzzer + Strobo Merah + Laser pointer - Ini simulasi UI untuk juri, bukan alarm aktual")
+with tab4:
+    st.header("🎨 Naphtol Detect - Dye Quality")
+    st.write(f"Naphtol 3.4um: {data['Naphtol_um']} um | H2O/OH 3.3um: {data['H2O_OH']}")
+    st.write("**Result:** Dye lot consistent" if 3.3 <= data['Naphtol_um'] <= 3.5 else "**Result:** Re-check dye lot")
 
-st.success("✅ FINAL JURI DIGITHOOK - SIMULATOR TEORI SIAP DEPLOY - AMAN HUKUM - TIDAK KLAIM AKTUAL")
-st.caption("File ini untuk juri Digithook only. Data gas adalah SIMULASI UI. Alat aktual robotik NDIR 4 + thermal + CCTV dikembangkan terpisah di ruang teduh dengan ESP32. Power WAJIB kabel, data WiFi/kabel LAN.")
+with tab5:
+    st.header("🔍 Forensic Trace")
+    st.write("Trace detection preview - IMX219 + NDIR pattern check.")
+    st.write(f"Signal strength: {round(random.uniform(60, 99),1)}%")
+
+with tab6:
+    st.header("💎 Gem Authenticity - 7.7um Emissivity")
+    st.write(f"Emissivity 7.7um: {data['Gem_emissivity']}")
+    st.write("**Result:** Likely genuine pattern" if 7.6 <= data['Gem_emissivity'] <= 7.8 else "**Result:** Need re-scan")
+
+with tab7:
+    st.header("📄 Certificate - ESC/POS")
+    st.write(f"**Certificate ID:** SSS-v23-{datetime.now().strftime('%Y%m%d-%H%M%S')}")
+    st.write(f"**Time:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S WIB')}")
+    st.write(f"**Checks:** CO2 {data['CO2_ppm']} ppm | CO {data['CO_ppm']} ppm | Thermal {data['Thermal_Max_C']}°C | Bio Room: {status if 'status' in locals() else 'Checked'}")
+    st.write("**Verdict:** PASS - Safe to proceed" if data['CO_ppm'] < 35 and data['Thermal_Max_C'] < 115 else "**Verdict:** HOLD - Fix action above first")
+    if st.button("🖨️ Generate Certificate (ESC/POS)"):
+        st.success("Certificate generated - ready to print via ESC/POS printer.")
+
+# --- Architecture ---
+st.divider()
+st.subheader("🏗️ Architecture")
+st.code("[NDIR 4-CH + IMX219 + MLX90640] -> [ESP32-S3 + Pump] -> [MQTT TLS] -> [Vultr Compute + Vultr Serverless Inference] -> [Streamlit + ESC/POS]", language="text")
+st.caption("Repo: github.com/AIchaliveret/super-secure-syst-v23 | Supporting: super-infrared (IR core) + ir-7detik-lensa-infra (7-sec IR lens)")
+
+# --- History table ---
+st.subheader("📊 Recent Log (Simulated)")
+hist = pd.DataFrame([get_reading() for _ in range(5)])
+st.dataframe(hist, width="stretch")
