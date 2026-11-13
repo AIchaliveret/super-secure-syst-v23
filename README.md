@@ -73,3 +73,18 @@ Bio Healthy Room is a monitoring + prevention prototype.
 Track
 HackGlobal 2026 - Civic and real-world impact + Agentic and GenAI apps
 
+---
+
+## Vision: Ruang Teduh for All Cities
+
+One box per city: Power Wajib Kabel 12V + AQI Monitoring ON.
+Same Super Infrared agent in every city: NDIR + Thermal + RGB -> MQTT -> Vultr Compute -> Dashboard.
+
+Start: Serpong, Tangsel, PIK 1, PIK 2
+Next: Bandung, Bogor, Semarang, Medan, Batam
+
+Automatic from Jupiter: 1x Run in Jupiter = all cities filled automatically.
+
+Proof in gallery: Jakarta Warehouse hotspot 612°C detected, CO2 852ppm, AI action: suppress fire, isolate section.
+
+Full list in file: Ruang_teduh_for_all_Cities.txt
