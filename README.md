@@ -1,43 +1,75 @@
-## v3.1 UPDATE - Bio Healthy Room + Ruang Teduh + SDM Recruitment - No Phone Has This Spec
-SUPER SECURE SYST v3.0 - AMD ACT III - THE BEST F-21 HMDS Uparrow
-🛡️ SUPER SECURE SPACE GUARDIAN - SIMULATOR TEORI UNTUK JUDGING DIGITHOOK
-⚠️ INI SIMULATOR TEORI 01-02-03 BUAT JUDGING PAK - YANG AKTUAL ROBOTIK NDIR 4 PLUS THERMAL PLUS CCTV LAGI KITA RAKIT DI RUANG TEDUH - POWER WAJIB KABEL DATA WIFI/KABEL LAN ESP32 OTAK PLUS KONEKSI INCLUDE
+SUPER SECURE SYST v23 - SUPER INFRARED
+HackGlobal 2026 | 6 Detect in 1 Agent + Bio Healthy Room
 
-KENAPA DI RUANG TEDUH, NGGAK DI README SUPER SECURE KITA AJA DI GITHUB?
-Karena 2 tempat ini beda fungsi sis, biar juri dan sponsor gak salah paham:
+One agent with 6 multispectral detection tools in one dashboard.
+Built for HackGlobal 2026 on Vultr.
 
-1. GITHUB super-secure-syst-v23.streamlit.app INI = SIMULATOR TEORI UNTUK JURI (DIGITHOOK)
+What It Does
+6 Detect Tools
+Food - RGB IMX219 + NDIR 4.26um CO2 for freshness / air quality
+Bio Healthy Room - SHT41 + NDIR + Thermal for dust, humidity, dirty area monitoring
+Status: Clean / Needs Cleaning / Risk
+Monitoring + prevention prototype, NOT a medical sterilization claim
+Derma - Multispectral skin check preview
+Naphtol - NDIR 3.4um Naphtol + 3.3um H2O/OH for dye quality
+Forensic Trace - Trace detection preview
+Gem Authenticity - 7.7um emissivity + RGB for gem check
+Safety - 30-Second Safety Observatory
+CH4 3.33um - explosion risk
+CO2 4.26um - air quality
+CO 4.64um - toxicity
+3.91um - auto-calibration
+O2 / H2S via I2C pump 350 mL/min
+Agent converts raw values to actions, e.g.:
 
-Isinya: HMDS-35 85% TRANSP, Fused Thermal+RGB, HUD 612°C White Hot - DATA SIMULASI UI
-Fungsinya: Buat belajar teori 01 THEORY, 02 OBSERVATION 30s DETECT / 270s STANDBY, 03 OPINION AI
-Data gas CO2 852ppm, HC %LEL di dashboard ini adalah SIMULASI UNTUK DEMO CARA KERJA DASHBOARD, BUKAN DATA SENSOR NDIR AKTUAL
-Aman hukum, tidak klaim bisa cium BBM/LPG/Ethanol 45°C beneran
-2. RUANG TEDUH = LAB AKTUAL ROBOTIK (OFFLINE, BUKAN DI GITHUB)
+CO 40ppm -> Open damper 30%, evac zone 2, notify tech
 
-Isinya: ESP32-S3 + NDIR 4 Channel BENERAN (3.33um BBM/LPG/Ethanol, 4.26um CO2, 4.64um CO, 3.91um Ref) + SHT41 + KE-25 O2 + MLX90640 Thermal 32x24 + IMX219 CCTV + Pompa 350mL
-Fungsinya: Uji coba beneran 24 jam nonstop, baca voltase asli, kalibrasi ethanol 45°C, test LPG bocor
-Kenapa di ruang teduh? Karena butuh listrik kabel terus, butuh gas beneran buat test, butuh 90 hari log - gak bisa di cloud
-Ini yang nanti dipasang di Mall, Plaza, Bioskop, Gedung DPR, Polri/TNI - POWER WAJIB KABEL, DATA BISA WIFI/KABEL LAN (ESP32 OTAK + KONEKSI INCLUDE DI DALAM CHIP)
-Jadi kalau juri tanya: "Ini alatnya mana?" Jawab: "Yang di GitHub ini simulator teorinya Pak, yang aktualnya lagi dirakit di ruang teduh lab kami."
+Fast Check - 7-Second IR Lens
+Quick 7-second infrared lens check for fast screening.
 
-ARSITEKTUR AKTUAL (RUANG TEDUH)
-HIDUNG ASLI NDIR 4 (butuh kabel power 12V)
-   ↓
-OTAK + KONEKSI ROBOT ESP32-S3 (WiFi include di chip, tapi power tetap kabel - lebih stabil)
-   ↓
-MATA Thermal Spectral MLX90640 + CCTV IMX219 (power kabel, data WiFi atau kabel LAN)
-   ↓
-MONITOR APP AKTUAL ROBOTIK PY (di laptop/Raspberry Pi di ruang teduh - baca Serial COM3/MQTT, BUKAN random)
-Sekarang jamannya WiFi serba wireless nirkabel, CCTV saja terhubung hanya dengan WiFi walau mesti ada kelistrikan yang terus memberi power. Betul, tapi untuk enterprise mall/plaza/DPR, kabel LAN lebih efektif karena WiFi bisa putus - alarm gak jalan. Makanya kita pakai kabel untuk koneksitasnya juga.
-DEPLOY
-Untuk Juri: app.py (simulator teori) -> Streamlit Cloud super-secure-syst-v23.streamlit.app
-Untuk Lab Aktual: esp32_ndir_actual.ino + app_aktual_robotik.py -> ESP32 di ruang teduh + laptop lokal
-TEAM
-Mister Ali Ang, Mister Sandy, Mister Budi, Even Garden - Ruang Teduh Jakarta
+Architecture
+[NDIR 4-CH + IMX219 + MLX90640 + SHT41 + O2/H2S]
+        |
+        v
+[ESP32-S3 + Pump]
+  UART2 GPIO16/17 -> NDIR
+  I2C GPIO21/22 -> O2 / H2S
+  GPIO27 PWM -> Pump
+        |
+        v
+[MQTT TLS - JSON Telemetry]
+        |
+        v
+[Vultr Compute Singapore + Vultr Serverless Inference]
+  AI Agent - 6 Detect Reasoning
+  RAG Vector Search
+        |
+        v
+[Streamlit Observatory Dashboard + ESC/POS Certificate]
+How Vultr Is Used
+Vultr Compute (Singapore) - Closest to Jakarta for low latency. Hosts Streamlit app, MQTT broker, RAG search, certificate generator.
+Vultr Serverless Inference - Runs the 6 Detect reasoning agent.
+How To Run
+git clone https://github.com/AIchaliveret/super-secure-syst-v23.git
+cd super-secure-syst-v23
+pip install -r requirements.txt
+streamlit run app.py
+Open: http://localhost:8501
 
-STATUS
-✅ FINAL JURI DIGITHOOK - 01 THEORY 02 OBSERVATION 03 OPINION - SIMULATOR AMAN HUKUM
-🔧 AKTUAL ROBOTIK DALAM PENGEMBANGAN 90 HARI DI RUANG TEDUH
+Live demo: https://super-secure-syst-v23.streamlit.app
 
-Catatan Hukum: Repo ini tidak mengklaim sebagai alat deteksi kebakaran aktual. Data gas adalah simulasi UI untuk judging. Alat aktual robotik dikembangkan terpisah dengan kalibrasi lab.
+Files In This Repo
+app.py - Streamlit dashboard, 6 Detect + Bio Healthy Room + Certificate
+requirements.txt - Python dependencies
+room air quality.jpg - Room air quality reference image
+index.html - Static landing page
+Supporting Repos
+super-infrared - IR core
+ir-7detik-lensa-infra - Fast 7-sec IR lens detection
+Honest Notes
+Live demo uses simulated sensor data so anyone can test without hardware.
+Real hardware uses the same MQTT JSON format as the demo.
+Bio Healthy Room is a monitoring + prevention prototype.
+Track
+HackGlobal 2026 - Civic and real-world impact + Agentic and GenAI apps
 
