@@ -10,8 +10,9 @@ import pandas as pd
 import numpy as np
 import random, time
 from datetime import datetime
-
+from streamlit_autorefresh import st_autorefresh
 st.set_page_config(page_title="Super Secure Syst v23 - Super Infrared", page_icon="🛡️", layout="wide")
+st_autorefresh(interval=3000, key="auto-refresh")
 st.info("MODE: HYBRID - 1 LIVE + 5 CALIBRATED SIMULATION | Demo - Simulated Sensors")
 # --- Header ---
 st.title("🛡️ SUPER SECURE SYST v23 - SUPER INFRARED")
