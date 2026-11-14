@@ -1,3 +1,5 @@
+MODE: HYBRID - 1 LIVE + 5 CALIBRATED SIMULATION
+
 SUPER SECURE SYST v23 - SUPER INFRARED
 HackGlobal 2026 | 6 Detect in 1 Agent + Bio Healthy Room
 
