@@ -1,0 +1,13 @@
+# FIX AUTO-REFRESH - Paste di app.py, di bawah import
+# Cuma 2 baris ini aja, Syst. Jangan ubah yang lain.
+
+# Di atas, di import:
+# from streamlit_autorefresh import st_autorefresh
+
+# Di bawah st.set_page_config:
+# st_autorefresh(interval=3000, key="auto-refresh")
+
+# Kalau tidak mau install library baru, pakai cara ini:
+# import time
+# time.sleep(3)
+# st.rerun()

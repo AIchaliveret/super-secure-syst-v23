@@ -1,0 +1,10 @@
+{
+  "app": "Super Secure Syst",
+  "version": "v23",
+  "next_version": "v24-HackStack-Tron",
+  "mode": "HYBRID - 1 LIVE + 5 CALIBRATED SIMULATION",
+  "status": "FREEZE for HackGlobal - Submit 1x only",
+  "upgradeable": true,
+  "features_v23": ["6 Detect", "Bio Healthy Room", "Ruang Teduh 9 Cities"],
+  "features_v24": ["6 Detect + Bio + Ruang Teduh + Tron Game"]
+}
