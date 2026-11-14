@@ -1,0 +1,11 @@
+CHECKLIST UPLOAD - INJURY TIME HACKGLOBAL
+[ ] 1. esp32_hybrid.ino - upload ke GitHub
+[ ] 2. api_connector.py - upload ke GitHub (sudah dibuat tadi)
+[ ] 3. game_config.json - upload ke GitHub (sudah dibuat tadi)
+[ ] 4. HACKSTACK_README.md - upload ke GitHub
+[ ] 5. README.md - tambahkan baris: MODE: HYBRID - 1 LIVE + 5 CALIBRATED SIMULATION
+[ ] 6. Video demo 90 detik - rekam SEKARANG, upload ke Drive / YouTube Unlisted, paste link ke submission
+[ ] 7. Dashboard - pastikan tulisan HYBRID keliatan di layar juri
+[ ] 8. Submit HackGlobal dulu (deadline Senin 16 Nov 01:00 WIB)
+[ ] 9. Baru submit Future Health (deadline 21 Nov 01:29 WIB)
+[ ] 10. JANGAN sentuh Ruang Teduh Loker sampai HackStack kelar
