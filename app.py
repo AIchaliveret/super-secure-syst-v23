@@ -12,7 +12,7 @@ import random, time
 from datetime import datetime
 
 st.set_page_config(page_title="Super Secure Syst v23 - Super Infrared", page_icon="🛡️", layout="wide")
-
+st.info("MODE: HYBRID - 1 LIVE + 5 CALIBRATED SIMULATION | Demo - Simulated Sensors")
 # --- Header ---
 st.title("🛡️ SUPER SECURE SYST v23 - SUPER INFRARED")
 st.caption("HackGlobal 2026 | 6 Detect in 1 Agent | Vultr Compute Singapore + Vultr Serverless Inference | 30-Second Safety Observatory + 7-Second IR Lens")
