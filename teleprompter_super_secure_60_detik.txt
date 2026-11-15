@@ -1,0 +1,16 @@
+TELEPROMPTER 60 DETIK - SUPER-SECURE SYST v23 AUTO
+Sama persis pola Cerebral Valley seperti Super-Infrared.
+
+[0-5 detik] "Ini Super Secure Syst v23. Bukan aplikasi yang menunggu kamu klik. Ini sensor yang bekerja sendiri, dua puluh empat jam."
+[5-15 detik] "Lihat. CO2, bau, suhu, kelembaban — semuanya bergerak sendiri. Bukan angka diam. Ini sensor aktif."
+[15-30 detik] "Kalau udara kotor, dia tidak hanya kasih peringatan. Dia bertindak sendiri. HEPA nyala, Fan nyala, otomatis."
+[30-40 detik] "Dan kalau kamu mau baca pelan-pelan, bisa PAUSE. Klik Pause, sensor berhenti. Klik Resume, jalan lagi. Sama seperti Super-Infrared."
+[40-50 detik] "Dan ini limit kreditnya. FREE CORE seratus scan per hari. Kalau habis, berhenti sendiri, tidak jebol."
+[50-60 detik] "Super Secure Syst v23. Bukan manusia yang mantau sensor. Tapi sensor yang mantau manusia, ruangan, dan bahaya."
+
+CARA UPLOAD KE SUPER-SECURE:
+1. Buka https://github.com/AIchaliveret/super-secure-syst-v23
+2. Klik Add file > Upload files
+3. Drag file super-secure_streamlit_app.py ini, TAPI rename jadi streamlit_app.py saat upload (timpa yang lama)
+4. Commit: "Upgrade: Super Secure AUTO-ACTIVE + PAUSE + Kredit"
+5. Streamlit Super Secure akan update otomatis jadi AUTO dalam 1-2 menit.
