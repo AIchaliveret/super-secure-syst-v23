@@ -18,7 +18,7 @@ if "auto" not in st.session_state: st.session_state.auto = True
 # --- HEADER MERAH SUPER SECURE ---
 st.markdown("""
 <div style="background:linear-gradient(90deg,#0F1B3D,#DC2626);padding:16px 20px;border-radius:12px;color:white">
-<h1 style="margin:0">🛡️ SUPER SECURE SYST v23 - SUPER INFRARED</h1>
+<h1 style="margin:0">🛡️ SUPER SECURE SYST v23 - BIO HEALTH ROOM</h1>
 <p style="margin:4px 0 0 0">HackGlobal 2026 | 6 Detect in 1 Agent | Vultr Compute Singapore + Vultr Serverless Inference | 30-Second Safety Observatory + 7-Second IR Lens</p>
 </div>
 """, unsafe_allow_html=True)
