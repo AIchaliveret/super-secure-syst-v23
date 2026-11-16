@@ -13,6 +13,12 @@ from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
 st.set_page_config(page_title="Super Secure Syst v23 - Super Infrared", page_icon="🛡️", layout="wide")
 st_autorefresh(interval=3000, key="auto-refresh")
+# === SUPER SECURE v23 - PAUSE / STANDBY / OWL ===
+LIMITS = {"CO": 9, "CO2": 800, "CH4": 1000, "H2S": 2}
+if "secure_mode" not in st.session_state:
+    st.session_state.secure_mode = "ACTIVE"
+if "pause_until" not in st.session_state:
+    st.session_state.pause_until = 0
 st.info("MODE: HYBRID - 1 LIVE + 5 CALIBRATED SIMULATION | Demo - Simulated Sensors")
 # --- Header ---
 st.title("🛡️ SUPER SECURE SYST v23 - SUPER INFRARED")
@@ -25,7 +31,25 @@ mode = st.sidebar.selectbox("Mode", ["Demo - Simulated Sensors", "Live - ESP32 M
 interval = st.sidebar.slider("Refresh (seconds)", 2, 10, 3)
 if st.sidebar.button("🔄 Refresh Now"):
     st.rerun()
+st.sidebar.markdown("### 🦉 Super Secure Mode")
+if st.sidebar.button("🟢 ACTIVE", use_container_width=True):
+    st.session_state.secure_mode = "ACTIVE"
+    st.rerun()
+if st.sidebar.button("⏸️ PAUSE - Operator", use_container_width=True):
+    st.session_state.secure_mode = "PAUSE"
+    st.session_state.pause_until = time.time() + 1800
+    st.rerun()
+if st.sidebar.button("🦉 STANDBY - Owl Mode", use_container_width=True):
+    st.session_state.secure_mode = "STANDBY"
+    st.rerun()
 
+if st.session_state.secure_mode == "PAUSE":
+    sisa = int(st.session_state.pause_until - time.time())
+    if sisa <= 0:
+        st.session_state.secure_mode = "STANDBY"
+        st.rerun()
+    else:
+        st.warning(f"⏸️ PAUSE by Operator - Alarm diam. Sisa {sisa//60} mnt {sisa%60} dtk.")
 # --- Simulated sensor data ---
 def get_reading():
     return {
@@ -42,7 +66,29 @@ def get_reading():
     }
 
 data = get_reading()
-
+# --- OWL AUTO-WAKE ---
+co_now = float(data.get('CO_ppm', 0))
+co2_now = float(data.get('CO2_ppm', 0))
+ch4_now = float(data.get('CH4_ppm', 0))
+h2s_now = float(data.get('H2S_ppm', 0))
+wake_reason = ""
+if co_now > 9:
+    wake_reason = f"CO {co_now} ppm > 9 ppm"
+elif co2_now > 800:
+    wake_reason = f"CO2 {co2_now} ppm > 800 ppm"
+elif ch4_now > 1000:
+    wake_reason = f"CH4 {ch4_now} ppm > 1000 ppm"
+elif h2s_now > 2:
+    wake_reason = f"H2S {h2s_now} ppm > 2 ppm"
+if st.session_state.secure_mode == "STANDBY":
+    if wake_reason != "":
+        st.session_state.secure_mode = "ACTIVE"
+        st.error(f"🦉 OWL WOKE UP! AUTO ACTIVE! Trigger: {wake_reason}")
+        st.rerun()
+    else:
+        st.success(f"🦉 STANDBY - Owl Tidur, Kuping Nyala. CO {co_now} | CO2 {co2_now} | CH4 {ch4_now} | H2S {h2s_now} - Aman.")
+if st.session_state.secure_mode == "ACTIVE":
+    st.success("🟢 ACTIVE - Semua sensor nyala full.")
 # --- Top metrics ---
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("CO2 (4.26um)", f"{data['CO2_ppm']} ppm", "OK" if data['CO2_ppm'] < 800 else "Ventilate")
